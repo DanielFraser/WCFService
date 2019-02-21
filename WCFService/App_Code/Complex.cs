@@ -27,7 +27,7 @@ public class EmployeeEnt
     [DataMember]
     public Nullable<decimal> Salary { get; set; }
     [DataMember]
-    public int DepartmentID { get; set; }
+    public string DepartmentName { get; set; }
     [DataMember]
     public string Address { get; set; }
 }

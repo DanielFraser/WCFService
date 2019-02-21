@@ -8,12 +8,14 @@ public class EmployeeService : IEmployeeService
     private EmployeeWCFEntities emp = new EmployeeWCFEntities();
     public void AddEmployee(string name, DateTime hiredate, decimal salary, string deptname, string address)
     {
-        Employee e = new Employee();
-        e.Name = name;
-        e.Salary = salary;
-        e.Hiredate = hiredate;
-        e.DepartmentID = emp.Departments.Where(a => a.DepartmentName == deptname).Select(a => a.DepartmentID).FirstOrDefault();
-        e.Address = address;
+        Employee e = new Employee
+        {
+            Name = name,
+            Salary = salary,
+            Hiredate = hiredate,
+            DepartmentID = emp.Departments.Where(a => a.DepartmentName == deptname).Select(a => a.DepartmentID).FirstOrDefault(),
+            Address = address
+        };
         emp.Employees.Add(e);
         emp.SaveChanges();
     }
@@ -48,7 +50,7 @@ public class EmployeeService : IEmployeeService
         {
             Name = a.Name,
             Address = a.Address,
-            DepartmentID = a.DepartmentID,
+            DepartmentName = a.Department.DepartmentName,
             Hiredate = a.Hiredate,
             ID = a.ID,
             Salary = a.Salary
