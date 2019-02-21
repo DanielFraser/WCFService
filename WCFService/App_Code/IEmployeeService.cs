@@ -20,4 +20,7 @@ public interface IEmployeeService
 
     [OperationContract]
     List<EmployeeEnt> GetAll();
+
+    [OperationContract]
+    List<string> GetDepts(string prefix);
 }

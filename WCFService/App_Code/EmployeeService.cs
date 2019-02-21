@@ -56,4 +56,9 @@ public class EmployeeService : IEmployeeService
             Salary = a.Salary
         }).ToList();
     }
+
+    public List<string> GetDepts(string prefix)
+    {
+        return emp.Departments.Where(a => prefix == "" ? true : a.DepartmentName.Contains(prefix)).Select(a => a.DepartmentName).ToList();
+    }
 }
